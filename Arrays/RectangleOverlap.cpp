@@ -16,11 +16,11 @@ class Point
 };
 bool rectangleOverlap(Point rec1_tleft,Point rec1_bright,Point rec2_tleft,Point rec2_bright)
 {
-    if(rec1_tleft.x<rec2_bright.x && rec1_bright.y<rec2_tleft.y && rec1_tleft.y>rec2_bright.y)
-        return true;
-    else if(rec1_bright.x>rec2_tleft.x && rec1_bright.y<rec2_tleft.y && rec1_tleft.y>rec2_bright.y)
-        return true;
-    return false;
+    if(rec1_tleft.y<rec2_bright.y || rec2_tleft.y<rec1_bright.y)
+        return false;
+    if(rec1_tleft.x>rec2_bright.x || rec2_tleft.x> rec1_bright.x)
+        return false;
+    return true;
 }
 int main()
 {
