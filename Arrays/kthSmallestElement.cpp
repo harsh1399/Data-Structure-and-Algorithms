@@ -27,7 +27,7 @@ int partition(int *arr,int low,int high)
 }
 int kthElement(int *arr,int low,int high, int k)
 {
-    if(low<high)
+    if(k>0 && k<= high)
     {
         int pivot_index = partition(arr,low,high);
         if(pivot_index == k)
