@@ -1,4 +1,4 @@
-/* Basic operations of doubly linked list */
+/* /* Basic operations of doubly linked list */
 
 #include<iostream>
 using namespace std;
@@ -107,4 +107,4 @@ int main()
     list.delete_node(5);
 
     list.print_list(); 
-}
+} 
