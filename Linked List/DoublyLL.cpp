@@ -1,4 +1,5 @@
-/* Insert search delete operations on a linked list */
+/* Basic operations of doubly linked list */
+
 #include<iostream>
 using namespace std;
 class Node
@@ -6,14 +7,15 @@ class Node
     public:
     int data;
     Node *next;
-
+    Node *prev;
     Node(int data)
     {
         this->data = data;
         this->next = nullptr;
+        this->prev = nullptr;
     }
 };
-class LinkedList
+class DoublyLinkedList
 {
     public:
     Node *head = nullptr,*tail = nullptr;
@@ -29,6 +31,7 @@ class LinkedList
         else
         {
             tail->next = newnode;
+            newnode->prev = tail;
             tail = newnode;
         }
     }
@@ -59,6 +62,7 @@ class LinkedList
         if(fast->data == data)
         {
             head = fast->next;
+            head->prev = nullptr;
             delete(fast);
             return;
         }
@@ -71,7 +75,10 @@ class LinkedList
                 slow->next = fast->next;
                 if(fast->next == nullptr)
                     tail = slow;
+                else
+                    fast->next->prev = slow;
                 fast->next = nullptr;
+                fast->prev = nullptr;
                 delete(fast);
                 return;
             }
@@ -82,7 +89,7 @@ class LinkedList
 };
 int main()
 {
-    LinkedList list;
+    DoublyLinkedList list;
     list.insert(1);
     list.insert(2);
     list.insert(3);
