@@ -17,11 +17,12 @@ class BST
 
     bool insert(int data);
     bool search(int data);
-    void inorder();
-    void preorder();
-    void postorder();
+    Node* Maximum();
+    Node *Minimum();
     void delete_node(int data);
 };
 
-
+void inorder(Node *root);
+void preorder(Node *root);
+void postorder(Node *root);
 #endif

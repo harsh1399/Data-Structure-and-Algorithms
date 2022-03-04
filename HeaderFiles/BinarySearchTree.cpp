@@ -51,3 +51,45 @@ bool BST:: search(int data)
     }
     return false;
 }
+Node* BST :: Maximum()
+{
+    Node *temp = root;
+    while(temp->right!=nullptr)
+        temp = temp->right;
+    return temp;
+}
+Node* BST :: Minimum()
+{
+    Node *temp = root;
+    while(temp->left!=nullptr)
+        temp = temp->left;
+    return temp;
+}
+void BST :: delete_node(int data)
+{
+
+}
+void inorder(Node *root)
+{
+    if(root == nullptr)
+        return;
+    inorder(root->left);
+    std::cout<<root->data<<" ";
+    inorder(root->right);
+}
+void postorder(Node *root)
+{
+    if(root == nullptr)
+        return;
+    inorder(root->left);
+    inorder(root->right);
+    std::cout<<root->data<<" ";
+}
+void preorder(Node *root)
+{
+    if(root == nullptr)
+        return;
+    std::cout<<root->data<<" ";
+    inorder(root->left);
+    inorder(root->right);
+}
