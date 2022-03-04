@@ -4,12 +4,12 @@
 bool BST:: insert(int data)   //insert new data, no duplicate allowed
 {
     Node *new_node = new Node(data);
+    Node *parent,*temp = root;
     if(root == nullptr)
     {
         root = new_node;
     }
     else{
-        Node *parent,*temp = root;
         while(temp!=nullptr)
         {
             if(temp->data == data)
@@ -29,8 +29,8 @@ bool BST:: insert(int data)   //insert new data, no duplicate allowed
             parent->left = new_node;
         else
             parent->right = new_node;
-        return true;
     }
+    return true;
 }
 bool BST:: search(int data)
 {
@@ -81,8 +81,8 @@ void postorder(Node *root)
 {
     if(root == nullptr)
         return;
-    inorder(root->left);
-    inorder(root->right);
+    postorder(root->left);
+    postorder(root->right);
     std::cout<<root->data<<" ";
 }
 void preorder(Node *root)
@@ -90,6 +90,6 @@ void preorder(Node *root)
     if(root == nullptr)
         return;
     std::cout<<root->data<<" ";
-    inorder(root->left);
-    inorder(root->right);
+    preorder(root->left);
+    preorder(root->right);
 }
