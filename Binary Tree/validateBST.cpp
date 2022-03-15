@@ -6,7 +6,7 @@ using namespace std;
 bool isBST(Node* root, long long int max,long long int min)
 {
     if(root==NULL)         
-    return true;
+        return true;
     long long int val = root->data;
     bool left_bst = isBST(root->left,val-1,min);
     bool right_bst = isBST(root->right,max,val+1);
