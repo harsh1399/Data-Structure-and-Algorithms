@@ -27,6 +27,7 @@ int main()
     preorder(bst.root);
     cout<<endl<<"postorder:"<<endl;
     postorder(bst.root);
-
+    cout<<endl<<"level order:"<<endl;
+    levelorder(bst.root);
     
 }

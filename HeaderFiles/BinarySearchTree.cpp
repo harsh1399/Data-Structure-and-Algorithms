@@ -1,6 +1,6 @@
 #include<iostream>
 #include "BinarySearchTree.h"
-
+#include<queue>
 bool BST:: insert(int data)   //insert new data, no duplicate allowed
 {
     Node *new_node = new Node(data);
@@ -92,4 +92,18 @@ void preorder(Node *root)
     std::cout<<root->data<<" ";
     preorder(root->left);
     preorder(root->right);
+}
+void levelorder(Node *root)
+{
+    if(root==nullptr) return;
+    std::queue<Node*> q;
+    q.push(root);
+    while(!q.empty())
+    {
+        Node* current = q.front();
+        std::cout<<current->data<<" ";
+        if(current->left!=nullptr) q.push(current->left);
+        if(current->right!=nullptr) q.push(current->right);
+        q.pop();
+    }
 }

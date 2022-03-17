@@ -25,4 +25,5 @@ class BST
 void inorder(Node *root);
 void preorder(Node *root);
 void postorder(Node *root);
+void levelorder(Node *root);
 #endif
