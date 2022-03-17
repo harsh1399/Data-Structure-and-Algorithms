@@ -29,5 +29,6 @@ int main()
     postorder(bst.root);
     cout<<endl<<"level order:"<<endl;
     levelorder(bst.root);
-    
+    cout<<endl<<"preorder iterative"<<endl;
+    preorder_iterative(bst.root);
 }
