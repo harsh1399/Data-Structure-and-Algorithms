@@ -31,4 +31,9 @@ int main()
     levelorder(bst.root);
     cout<<endl<<"preorder iterative"<<endl;
     preorder_iterative(bst.root);
+    cout<<endl<<"inorder iterative - diff method"<<endl;
+    inorder_iterative_1(bst.root);
+    cout<<endl<<"inorder iterative"<<endl;
+    inorder_iterative(bst.root);
+    
 }

@@ -27,4 +27,6 @@ void preorder(Node *root);
 void postorder(Node *root);
 void levelorder(Node *root);
 void preorder_iterative(Node *root);
+void inorder_iterative(Node *root);
+void inorder_iterative_1(Node *root);
 #endif

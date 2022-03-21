@@ -121,3 +121,42 @@ void preorder_iterative(Node *root)
         if(current->left!=nullptr) stk.push(current->left);
     }
 }
+void inorder_iterative(Node* root)
+{
+    std::stack<Node*> stk;
+    stk.push(root);
+    while(!stk.empty())
+    {
+        Node *current= stk.top();
+        if(current->left!=nullptr)
+        {
+            stk.push(current->left);
+            current->left = nullptr;
+            continue;
+        }
+        else
+        {
+            std:: cout<< current->data<<" ";
+            stk.pop();
+            if(current->right!=nullptr)
+                stk.push(current->right);
+        }
+    }
+}
+void inorder_iterative_1(Node* root)
+{
+    std::stack<Node *> stk;
+    Node *current = root;
+    while(current!=nullptr || !stk.empty())
+    {
+        while(current!=nullptr)
+        {
+            stk.push(current);
+            current = current->left;
+        }       
+        current = stk.top();
+        stk.pop();
+        std::cout<<current->data<<" ";
+        current = current->right;
+    }
+}
