@@ -66,10 +66,7 @@ Node* BST :: Minimum()
         temp = temp->left;
     return temp;
 }
-void BST :: delete_node(int data)
-{
 
-}
 void inorder(Node *root)
 {
     if(root == nullptr)
@@ -160,3 +157,94 @@ void inorder_iterative_1(Node* root)
         current = current->right;
     }
 }
+
+void searchNode(Node* &delet, Node* &parent,int key)
+    {
+        while(delet!=nullptr && delet->data!=key)
+        {
+            parent = delet;
+            if(delet->data>key)
+                delet = delet->left;
+            else
+                delet = delet->right;
+        }
+    }
+    Node* predecessor(Node *root,Node* &predec_parent)
+    {
+        Node *temp = root->left;
+        predec_parent = root;
+        while(temp->right!=nullptr)
+        {
+            predec_parent = temp;
+            temp = temp->right;
+        }
+        return temp;
+    }
+    void noChild(Node *delet, Node *parent)
+    {
+        if(parent->right == delet)
+            parent->right = nullptr;
+        else
+            parent->left = nullptr;
+    }
+    void oneChild(Node *delet, Node *parent)
+    {
+        if(parent->right== delet)
+        {
+            if(delet->left == nullptr && delet->right != nullptr)
+                parent->right = delet->right;
+            else
+                parent->right = delet->left;            
+        }
+        else
+        {
+            if(delet->left == nullptr && delet->right != nullptr)
+                parent->left = delet->right;
+            else
+                parent->left = delet->left;          
+        }
+    }
+    Node* deleteNode(Node* root, int key) {
+        Node *parent = nullptr, *delet = root;
+        searchNode(delet,parent,key);
+        if(delet!=nullptr){
+            if(delet->left == nullptr && delet->right == nullptr)
+            {
+                if(parent == nullptr)
+                    return nullptr;
+                noChild(delet,parent);
+            }
+            else if((delet->left == nullptr && delet->right != nullptr) || (delet->left != nullptr && delet->right == nullptr) )
+            {
+                if(parent == nullptr)
+                {
+                    if(root->left!=nullptr) return root->left;
+                    return root->right;
+                }
+                oneChild(delet,parent);
+            }
+            else
+            {
+                Node *predec_parent=nullptr;
+                Node *predec = predecessor(delet,predec_parent);
+                if(predec->right == nullptr && predec->left == nullptr)
+                    noChild(predec,predec_parent);
+                else if((predec->left == nullptr && predec->right != nullptr) || (predec->left != nullptr && predec->right == nullptr))
+                    oneChild(predec,predec_parent);
+            
+                predec->left = delet->left;
+                predec->right = delet->right;
+                if(parent == nullptr)
+                {
+                    root = predec;
+                }
+                else{
+                    if(parent->left == delet)
+                        parent->left = predec;
+                    else
+                        parent->right = predec;
+                }
+            }
+        }
+        return root;
+    }

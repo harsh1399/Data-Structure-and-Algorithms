@@ -36,4 +36,13 @@ int main()
     cout<<endl<<"inorder iterative"<<endl;
     inorder_iterative(bst.root);
     
+    BST bst1;
+    bst1.insert(5);
+    bst1.insert(3);
+    bst1.insert(2);
+    bst1.insert(4);
+    bst1.insert(6);
+    bst1.insert(7);
+    
+    bst1.root = deleteNode(bst1.root,3);
 }

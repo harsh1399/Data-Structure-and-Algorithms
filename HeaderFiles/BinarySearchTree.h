@@ -19,7 +19,6 @@ class BST
     bool search(int data);
     Node* Maximum();
     Node *Minimum();
-    void delete_node(int data);
 };
 
 void inorder(Node *root);
@@ -29,4 +28,5 @@ void levelorder(Node *root);
 void preorder_iterative(Node *root);
 void inorder_iterative(Node *root);
 void inorder_iterative_1(Node *root);
+Node* deleteNode(Node* root, int key);
 #endif
