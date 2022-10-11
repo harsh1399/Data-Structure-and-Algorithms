@@ -3,27 +3,31 @@
 #include<vector>
 using namespace std;
 
-bool hasCycle(vector<int> adj[],int visited[],int node,int parent,int vertex){
-    if(visited[node] == 1)
+bool hasCycle(vector<int> adj[],int visited[],int pathVisited[],int node){
+    if(visited[node] == 1 && pathVisited[node]==1)
         return true;
+    else if(visited[node]==1 && pathVisited[node]==0)
+        return false;
     visited[node] = 1;
+    pathVisited[node] = 1;
     for(int i=0;i<adj[node].size();i++){
-        if(hasCycle(adj,visited,adj[node][i],node,vertex))
+        if(hasCycle(adj,visited,pathVisited,adj[node][i]))
             return true;
-        hasCycle(adj,visited,adj[node][i],node,vertex);
     }
+    pathVisited[node] = 0;
     return false;
 }
 
 bool DFSCycle(vector<int> adj[],int vertex){
     int visited[vertex] = {0};
-    if(hasCycle(adj,visited,0,0,vertex))
+    int pathVisited[vertex] = {0};
+    if(hasCycle(adj,visited,pathVisited,0))
         return true;
     for(int i=0;i<vertex;i++){
         if(visited[i]!=1)
-            if(hasCycle(adj,visited,i,i,vertex))
+            if(hasCycle(adj,visited,pathVisited,i))
                 return true;
-            hasCycle(adj,visited,i,i,vertex);
+            hasCycle(adj,visited,pathVisited,i);
     }
     return false;
 }
