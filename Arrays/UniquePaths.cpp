@@ -38,8 +38,12 @@ public:
             result /= i-(m-1);
             
         }
-        //cout<<result;
+        cout<<result<<endl;
         return result;
     }
 };
+int main(){
+    Solution s;
+    cout<<s.uniquePaths(53,4);
+}
 
