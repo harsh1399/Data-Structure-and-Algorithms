@@ -21,6 +21,52 @@ Node* reverseKNodes(Node* head, int k)
         head->next = reverseKNodes(next,k);
     return prev;
 }
+
+//Iterative solution
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+// class Solution {
+// public:
+//     ListNode* reverseKGroup(ListNode* head, int k) {
+//         int count = 0;
+//         ListNode dummy;
+//         ListNode *begin;
+//         dummy.next = head;
+//         begin = &dummy;
+//         while(head!=nullptr){
+//             count++;
+//             if(count % k == 0){
+//                 begin = reverse(begin,head->next);
+//                 head = begin->next;
+//             }
+//             else{
+//                 head = head->next;
+//             }
+//         }
+//         return dummy.next;
+//     }
+//     ListNode* reverse(ListNode *begin,ListNode *end){
+//         ListNode *prev = begin,*curr = begin->next,*nex,*first = curr;
+//         while(curr!=end){
+//             nex = curr->next;
+//             curr->next= prev;
+//             prev = curr;
+//             curr = nex;
+//         }
+//         begin->next = prev;
+//         first->next = curr;
+//         return first;
+//     }
+// };
+
 int main()
 {
     LinkedList list;
