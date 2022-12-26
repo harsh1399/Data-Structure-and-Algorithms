@@ -37,6 +37,33 @@ int rainTrap(const int* arr, int size)
     }
     return rain_water;
 }
+
+//another solution - O(N) SC - O(1)
+// class Solution {
+// public:
+//     int trap(vector<int>& height) {
+//         int res=0,left = 0,right = height.size()-1,leftmax = 0,rightmax = 0;
+//         while(left<right){
+//             if(height[left]<=height[right]){
+//                 if(height[left]>=leftmax)
+//                     leftmax = height[left];
+//                 else
+//                     res += leftmax - height[left];
+//                 left++;
+//             }
+//             else{
+//                 if(height[right]>=rightmax){
+//                     rightmax = height[right];
+//                 }
+//                 else
+//                     res += rightmax - height[right];
+//                 right--;
+//             }
+//         }
+//         return res;
+//     }
+// };
+
 int main()
 {
     int n;
